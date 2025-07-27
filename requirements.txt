@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain-community
+
+openai
+faiss-cpu
+PyMuPDF
+python-docx
+requests
+python-dotenv
