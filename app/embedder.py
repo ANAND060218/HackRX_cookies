@@ -1,15 +1,14 @@
-from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain.docstore.document import Document
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
-def embed_chunks(chunks: list) -> FAISS:
+embedding_model = HuggingFaceEmbeddings(
+    model_name="models/bge-small-en", 
+    model_kwargs={"local_files_only": True}
+)
+
+def embed_chunks(chunks):
+    from langchain_community.vectorstores import FAISS
+    from langchain.docstore.document import Document
+
     docs = [Document(page_content=chunk) for chunk in chunks]
-
-    # ✅ Use local model path
-    embeddings = HuggingFaceEmbeddings(
-        model_name="models/bge-small-en",  # 👈 point to local model folder
-        model_kwargs={"device": "cpu"}     # or "cuda" if using GPU
-    )
-
-    db = FAISS.from_documents(docs, embeddings)
+    db = FAISS.from_documents(docs, embedding_model)
     return db
