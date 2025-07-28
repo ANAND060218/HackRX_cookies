@@ -12,6 +12,9 @@ load_dotenv()
 
 app = FastAPI()
 
+@app.get("/")
+def home():
+    return {"message": "FastAPI is live!"}
 @app.post("/api/v1/hackrx/run", response_model=QueryResponse)
 async def run_query(req: QueryRequest, authorization: str = Header(...)):
     if not authorization.endswith("cda0"):
