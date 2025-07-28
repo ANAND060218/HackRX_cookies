@@ -1,8 +1,8 @@
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
 embedding_model = HuggingFaceEmbeddings(
-    model_name="models/bge-small-en", 
-    model_kwargs={"local_files_only": True}
+    model_name="BAAI/bge-small-en"
+
 )
 
 def embed_chunks(chunks):
