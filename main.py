@@ -6,6 +6,7 @@ from app.retriever import get_similar_contexts
 from app.llm_reasoner import generate_answer
 from dotenv import load_dotenv
 import os
+import json  # ✅ Import json
 
 load_dotenv()
 
@@ -26,4 +27,10 @@ async def run_query(req: QueryRequest, authorization: str = Header(...)):
         answer = generate_answer(context, q)
         answers.append(answer)
 
-    return QueryResponse(answers=answers)
+    response = QueryResponse(answers=answers)
+
+    # ✅ Save the response to a JSON file
+    # with open("response_output2.json", "w", encoding="utf-8") as f:
+    #     json.dump(response.dict(), f, indent=4, ensure_ascii=False)
+
+    return response

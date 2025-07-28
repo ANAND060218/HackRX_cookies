@@ -1,10 +1,14 @@
 fastapi
 uvicorn
 langchain-community
-
+langchain-huggingface
 openai
 faiss-cpu
 PyMuPDF
 python-docx
 requests
 python-dotenv
+google-generativeai
+sentence-transformers
+bs4
+huggingface-hub
