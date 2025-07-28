@@ -19,11 +19,15 @@ def home():
 async def run_query(req: QueryRequest, authorization: str = Header(...)):
     if not authorization.endswith("cda0"):
         raise HTTPException(status_code=401, detail="Unauthorized token")
+    
+   
+    print(f"📄 Document URL: {req.documents}")
+    print(f"❓ Questions: {req.questions}")
 
     raw_text = extract_text_from_url(req.documents)
     chunks = chunk_text(raw_text)
     db = embed_chunks(chunks)
-
+    
     answers = []
     for q in req.questions:
         context = get_similar_contexts(db, q)
