@@ -1,16 +1,19 @@
 import os
-import google.generativeai as genai
+from openai import OpenAI
 from langchain_core.documents import Document
+from dotenv import load_dotenv  # ✅ Load environment variables
 
-# ✅ Load the Gemini API key from environment FIRST
-GEMINI_API_KEY = "AIzaSyAhzeZhr9QTUHtDUDuvEoOMex13RV9jXDg"
+# ✅ Load .env variables
+load_dotenv()
 
-genai.configure(api_key=GEMINI_API_KEY)  # ✅ Now this works
+# ✅ Set the Groq-compatible OpenAI client
+client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.getenv("api_key")  # ✅ Load key from .env
+)
 
-# ✅ Load the Gemini model
-model = genai.GenerativeModel("gemini-2.0-flash")
-print("Loaded GEMINI_API_KEY:", os.getenv("GEMINI_API_KEY"))
-
+# ✅ Set the model name
+GROQ_MODEL = "llama3-70b-8192"
 
 def generate_answer(contexts: list[Document], question: str) -> str:
     try:
@@ -25,12 +28,20 @@ Context:
 Question: {question}
 Answer:"""
 
-        print("\n\n--- PROMPT SENT TO GEMINI ---")
-        print(prompt)
+        print("\n\n--- PROMPT SENT TO GROQ ---")
         print("--- END PROMPT ---\n\n")
 
-        response = model.generate_content(prompt)
-        return response.text.strip()
+        # 🧠 Chat completion using new client
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.2
+        )
+        return response.choices[0].message.content.strip()
+
     except Exception as e:
-        print("Gemini error:", e)
-        return "❌ Error generating response from Gemini"
+        print("Groq error:", e)
+        return "❌ Error generating response from Groq"
