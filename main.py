@@ -5,11 +5,19 @@ from app.embedder import embed_chunks
 from app.retriever import get_similar_contexts
 from app.llm_reasoner import generate_batch_answer  # <-- updated
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
+
 import os
 import time
 load_dotenv()
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust for security in production
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
