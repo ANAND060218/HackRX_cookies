@@ -24,7 +24,7 @@ def generate_batch_answer(
             f"Context {idx}:\n{ctx_text}\n\n"
         )
     prompt += (
-        "You are a specialist in insurance policy language. I will give you a list of questions and their raw answers. For each question, produce:1. a concise, precise “refined_answer” that uses exact numbers, terms, and conditions;  2. a “keywords” list of 3–5 short phrases capturing the core concepts;"
+        "You are a specialist in  insurance, legal, HR, and compliance domains. I will give you a list of questions and their raw answers. For each question, produce:1. a concise, precise “refined_answer” that uses exact numbers, terms, and conditions;  2. a “keywords” list of 3–5 short phrases capturing the core concepts;"
         "Please **only** return a JSON object with this schema:\n"
         '{"answers": ["Answer to Q1", "Answer to Q2", ...]}\n'
         "Do not include any additional text, explanation, or formatting."
