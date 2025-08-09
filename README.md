@@ -3,6 +3,10 @@
 
 Our solution is an LLM-powered Intelligent Query–Retrieval System designed to answer complex, domain-specific questions instantly by retrieving and interpreting relevant clauses from multi-format documents.
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 # It Contains: 
 
 Semantic Search (FAISS + HuggingFace BGE embeddings) for accurate clause retrieval.
@@ -14,6 +18,7 @@ OCR for extracting text from images and scanned documents.
 Custom domain logic for specialized queries (Insurance, Legal, HR).
 
 his enables businesses to reduce manual search time, improve customer response speed, and ensure accuracy in decision-making.
+
 
 # Breakdown of each files present in this repo:
 
