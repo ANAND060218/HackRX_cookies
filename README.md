@@ -49,8 +49,8 @@ pip install -r requirements.txt
 
 GOOGLE_API_KEY= xxxx (we provide our api key in pitch-deck sumbission you can use it )
 
-## Install one package before run the code which is pyteseract use for convert imgage to text 
-click the below link to download teseract.exe file on Window 
+## Install one package before run the code which is pytesseract used for convert imgage to text 
+click the below link to download tesseract.exe file on Window 
 
 [Download Tesseract OCR (Windows)](https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe)
 
