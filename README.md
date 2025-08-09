@@ -42,7 +42,7 @@ Run the following commands:
 git clone https://github.com/ANAND060218/HackRX_cookies.git
 cd HackRX_cookies
 python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+venv\Scripts\activate  # On Windows
 pip install -r requirements.txt
 ```
 ## step 2 create .env file in root directory with below content 
