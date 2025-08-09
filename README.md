@@ -62,8 +62,14 @@ uvicorn main:app --reload
 ```
 ## test the api endpoint as 
     http://localhost:8000/api/v1/hackrx/run
+### optional make local into public via tunneling run the below two command in new terminal after running the unicorn command open new terminal and past it
+
+    npm install -g cloudflared  
+    cloudflared tunnel --url http://localhost:8000
 
 # Method-2 (Another easy method to test our code in colab (with gpu version))
+
+### The below code is same as the github repo code but slight changes to compact in colab environmet remaining logic are same
 
 Instead of testing our code in local machine or vs code with the above four step another option to test the same code in colab easly 
 
@@ -71,7 +77,7 @@ Instead of testing our code in local machine or vs code with the above four step
 
 change the runtime to t4 GPU (option)
 
-copy the below single cell code and past in one cell --> click the run button -->give continue or allow it will ask you to access the drive because we store the cache data in google drive --> it will give a public api via cloud flare then test it! That's It!
+copy the below single cell code and past in one cell --> click the run button -->click (continue or allow) it will ask you to access the drive because we store the cache data in google drive --> finally it will give a public api via cloudflare then test it! That's It!
 
     # ─── MOUNT DRIVE FOR CACHE ───────────────────────────────────────────────
     from google.colab import drive
