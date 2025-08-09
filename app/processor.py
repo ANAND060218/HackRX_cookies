@@ -3,7 +3,7 @@ import requests
 from tempfile import NamedTemporaryFile
 from pathlib import Path
 import mimetypes
-
+#-----------------------------#------------------------------------------------------------------#
 def extract_text_from_url(file_url: str):
     """
     Return (text, ext) where ext is like 'pdf','docx','pptx','xlsx','png','jpg','eml'
@@ -87,10 +87,13 @@ def extract_text_from_url(file_url: str):
     except Exception as e:
         return f"⚠ Error processing file: {e}", None
 
-
+#-----------------------------#------------------------------------------------------------------#
+#creating chunks
 def chunk_text(text: str, chunk_size: int = 400, overlap: int = 100):
     words = text.split()
     if not words:
         return []
     step = chunk_size - overlap
     return [" ".join(words[i:i + chunk_size]) for i in range(0, len(words), step)]
+
+#-----------------------------#------------------------------------------------------------------#

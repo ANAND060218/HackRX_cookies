@@ -14,3 +14,4 @@ pillow
 pytesseract
 openpyxl
 sentence-transformers
+pandas

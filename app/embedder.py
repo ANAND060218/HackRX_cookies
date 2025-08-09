@@ -10,10 +10,10 @@ print(f"🔍 embedder: using device -> {DEVICE}")
 
 # Initialize embedding model with device-aware kwargs
 embedding_model = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en",   # change to bge-base-en if you prefer
+    model_name="BAAI/bge-base-en",   # we can also use BAAI/bge-small-en it will be faster but less accurate
     model_kwargs={"device": DEVICE}
 )
-
+#-----------------------------#------------------------------------------------------------------#
 def embed_chunks(chunks):
     """
     Accepts list[str] -> returns FAISS index object.
@@ -22,3 +22,5 @@ def embed_chunks(chunks):
     docs = [Document(page_content=c) for c in chunks]
     db = FAISS.from_documents(docs, embedding_model)
     return db
+
+#-----------------------------#------------------------------------------------------------------#
