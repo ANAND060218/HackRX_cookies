@@ -79,6 +79,9 @@ change the runtime to t4 GPU (option)
 
 copy the below single cell code and past in one cell --> click the run button -->click (continue or allow) it will ask you to access the drive because we store the cache data in google drive --> finally it will give a public api via cloudflare then test it! That's It!
 
+<details>
+<summary>Click to view Colab Code</summary>
+
     # ─── MOUNT DRIVE FOR CACHE ───────────────────────────────────────────────
     from google.colab import drive
     drive.mount('/content/drive', force_remount=True)
