@@ -1,14 +1,24 @@
+# app/embedder.py
+import torch
+from langchain.docstore.document import Document
+from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
-embedding_model = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en"
+# Device detection
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"🔍 embedder: using device -> {DEVICE}")
 
+# Initialize embedding model with device-aware kwargs
+embedding_model = HuggingFaceEmbeddings(
+    model_name="BAAI/bge-small-en",   # change to bge-base-en if you prefer
+    model_kwargs={"device": DEVICE}
 )
 
 def embed_chunks(chunks):
-    from langchain_community.vectorstores import FAISS
-    from langchain.docstore.document import Document
-
-    docs = [Document(page_content=chunk) for chunk in chunks]
+    """
+    Accepts list[str] -> returns FAISS index object.
+    FAISS index is CPU-persisted and picklable.
+    """
+    docs = [Document(page_content=c) for c in chunks]
     db = FAISS.from_documents(docs, embedding_model)
     return db
