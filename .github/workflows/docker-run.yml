@@ -1,27 +1,30 @@
-name: Hackathon App - Build & Run Docker
+name: Build and Run Docker App
 
 on:
-  workflow_dispatch:  # Manual run
+  workflow_dispatch: # run manually
   push:
     branches:
       - main
 
 jobs:
-  build-and-run:
+  docker-build-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build Docker Image
+      - name: Create .env file from GitHub Secrets
+        run: echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}" > .env
+
+      - name: Build Docker image
         run: docker build -t hackathon_app .
 
-      - name: Run Docker Container
-        run: |
-          docker run -d -p 8000:8000 --env-file .env hackathon_app
-          sleep 15
-          docker logs $(docker ps -q --filter ancestor=hackathon_app)
+      - name: Run Docker container with .env
+        run: docker run -d -p 8000:8000 --env-file .env hackathon_app
+      
+      - name: Keep workflow alive for testing (sleep 5 hour)
+        run: sleep 18000
