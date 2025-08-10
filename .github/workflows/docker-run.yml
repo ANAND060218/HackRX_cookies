@@ -23,11 +23,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t hackathon_app .
 
-      - name: Run Docker container with .env
-        run: docker run -d -p 8000:8000 --env-file .env hackathon_app
-     
-      - name: Show container logs
-        run: docker logs -f  hackathon_app &
-     
-      - name: Keep workflow alive for testing (sleep 5 hour)
-        run: sleep 18000
+      - name: Run container detached
+        run: docker run -d --name hackathon_container -p 8000:8000 --env-file .env hackathon_app
+
+      - name: Stream logs (Cloudflare URL will appear here)
+        run: docker logs -f hackathon_container &
+
+      - name: Wait for tunnel to initialize
+        run: sleep 120
