@@ -10,7 +10,7 @@ print(f"🔍 embedder: using device -> {DEVICE}")
 
 # Initialize embedding model with device-aware kwargs
 embedding_model = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-base-en",   # we can also use BAAI/bge-small-en it will be faster but less accurate
+    model_name="BAAI/bge-small-en",   # we can also use BAAI/bge-base-en it will be faster but less accurate
     model_kwargs={"device": DEVICE}
 )
 #-----------------------------#------------------------------------------------------------------#
