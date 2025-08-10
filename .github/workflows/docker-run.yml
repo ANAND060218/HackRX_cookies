@@ -25,6 +25,9 @@ jobs:
 
       - name: Run Docker container with .env
         run: docker run -d -p 8000:8000 --env-file .env hackathon_app
-      
+     
+      - name: Show container logs
+        run: docker logs -f hackathon_container &
+     
       - name: Keep workflow alive for testing (sleep 5 hour)
         run: sleep 18000
