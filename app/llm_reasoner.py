@@ -15,7 +15,7 @@ except Exception:
 MODEL = None
 if GENAI_API_KEY and genai:
     genai.configure(api_key=GENAI_API_KEY)
-    MODEL = genai.GenerativeModel("gemini-2.5-flash") # In free tier gemini-2.5-flash having  RPM-15	TPM-250000	RPD-1000
+    MODEL = genai.GenerativeModel("gemini-2.5-flash-lite") # In free tier gemini-2.5-flash having  RPM-15	TPM-250000	RPD-1000
 
 from langchain.docstore.document import Document
 

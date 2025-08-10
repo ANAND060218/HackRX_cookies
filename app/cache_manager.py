@@ -17,7 +17,7 @@ else:
     url_mapping = {}
 #-----------------------------------#---------------#
 
-def _compute_file_text_hash(file_url: str, snippet_len: int = 100) -> str:
+def _compute_file_text_hash(file_url: str, snippet_len: int = 16) -> str:
     """
     Quickly extract only enough text to generate a hash.
     For PDFs, DOCX, PPTX, XLSX, read minimal pages/slides/rows.
