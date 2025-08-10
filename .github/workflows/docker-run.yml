@@ -30,4 +30,4 @@ jobs:
         run: docker logs -f hackathon_container &
 
       - name: Wait for tunnel to initialize
-        run: sleep 120
+        run: sleep 18000
