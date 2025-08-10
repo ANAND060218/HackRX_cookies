@@ -103,4 +103,4 @@ before push the code in your repo you add the environment variable by below step
 ->settings -> scretes and variables (in sidebar) -> Action -> add varaible name with api key as 
 GOOGLE_API_KEY= xxxx [get our api here for testing](https://jumpshare.com/s/b5evX9uLEMaaUrkJAUH5)
 
-### finally push the full code into the new repo then visit the Action page of your repo you can see the running workflow and see the log you can get the public api(within 3-min) via cloudflare for testing our code (that action will runs aroud 5 hour) 
+### finally push the full code into the new repo then visit the Action page of your repo you can see the running workflow and see the log you can get the public api(within 3-min) via cloudflare for testing our code (that action will runs aroud 5-hour) 
